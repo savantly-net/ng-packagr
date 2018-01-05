@@ -24,7 +24,7 @@ export const initTsConfigFactory: (def: TsConfig) => BuildStep = defaultTsConfig
   tsConfig.options.basePath = basePath;
   tsConfig.options.baseUrl = basePath;
   tsConfig.options.rootDir = basePath;
-  tsConfig.options.outDir = artefacts.outDir;
+  tsConfig.options.outDir = basePath;
   tsConfig.options.genDir = artefacts.outDir;
 
   if (entryPoint.languageLevel) {

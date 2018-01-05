@@ -82,9 +82,26 @@ export async function ngc(entryPoint: NgEntryPoint, artefacts: NgArtefacts) {
 
   // ng.CompilerHost
   const tsConfig = artefacts.tsConfig;
+
+  const destPath = artefacts.outDir;
+
+  const tsCompilerHost = createCompilerHostForSynthesizedSourceFiles(artefacts.tsSources.transformed, tsConfig.options);
+  tsCompilerHost.writeFile = (
+    fileName: string,
+    data: string,
+    writeByteOrderMark: boolean,
+    onError?: (message: string) => void,
+    sourceFiles?: ReadonlyArray<ts.SourceFile>
+  ): void => {
+    //    debugger;
+    console.log(`Write file output...
+... ${fileName}
+... ${destPath}`);
+  };
+
   const ngCompilerHost = ng.createCompilerHost({
     options: tsConfig.options,
-    tsHost: createCompilerHostForSynthesizedSourceFiles(artefacts.tsSources.transformed, artefacts.tsConfig.options)
+    tsHost: tsCompilerHost
   });
 
   // ng.Program
