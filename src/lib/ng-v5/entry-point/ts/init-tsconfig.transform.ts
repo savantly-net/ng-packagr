@@ -1,3 +1,4 @@
+import { ParsedConfiguration } from '@angular/compiler-cli';
 import { BuildGraph } from '../../../brocc/build-graph';
 import { Node } from '../../../brocc/node';
 import { Transform, transformFromPromise } from '../../../brocc/transform';
